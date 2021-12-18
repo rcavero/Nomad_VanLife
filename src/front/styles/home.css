@@ -5,3 +5,27 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+.rounded-button-left {
+  width: 60px;
+  height: 60px;
+  background: rgb(255, 239, 21);
+  color: black;
+  position: fixed;
+  top: 10%;
+  left: 5%;
+  z-index: 3;
+  border: solid 3px;
+  border-radius: 50%;
+}
+.rounded-button-right {
+  width: 60px;
+  height: 60px;
+  background: rgb(9, 224, 231);
+  color: black;
+  position: fixed;
+  top: 10%;
+  right: 5%;
+  z-index: 3;
+  border: solid 3px;
+  border-radius: 50%;
+}
