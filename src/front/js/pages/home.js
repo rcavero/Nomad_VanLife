@@ -8,18 +8,18 @@ export const Home = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="text-center mt-0">
+    <div className="container-fluid text-center m-0 p-0">
       {/* ------------------------------------------------------------------------------ */}
       <div
-        className="container-fluid"
-        style={{ width: "100%", height: "100vh" }}
+        className="container-fluidp-0"
+        style={{ width: "100%", height: "90vh" }}
       >
-        <button className="rounded-button-left">
+        {/* <button className="rounded-button-left">
           <ion-icon name="map-outline"></ion-icon>
         </button>
         <button className="rounded-button-right">
           <ion-icon name="map-outline"></ion-icon>
-        </button>
+        </button> */}
         <Map />
       </div>
       {/* ------------------------------------------------------------------------------ */}
