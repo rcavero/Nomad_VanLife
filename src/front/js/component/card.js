@@ -1,5 +1,6 @@
 import propTypes from "prop-types";
 import React from "react";
+import "../../styles/navbar.css";
 
 export const Card = (props) => {
 
@@ -37,8 +38,8 @@ export const Card = (props) => {
     }
 
     return (
-        <div className="container-fluid mt-3">
-            <div className="card mb-3 col-lg-6 col-md-10 col-sm-12 m-auto bg-light shadow">
+        <div className="container-fluid pt-3">
+            <div className="card mb-3 col-lg-6 col-md-10 col-sm-12 col-xs-12 m-auto bg-light shadow border border-secondary">
                 <img src={props.picture} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h4 className="card-title mb-3"><i class={kinfOfPlace(props.kindPlace)}></i> {props.title}</h4>

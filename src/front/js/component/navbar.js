@@ -24,7 +24,7 @@ export const Navbar = () => {
             <nav className="navbar navbar-expand-md navbar-light bg-light border-3 border-bottom border-primary">
                 <div className="container-fluid">
 					<Link to="/">
-                    	<a className="navbar-brand text-decoration-none">Nomad Vanlife</a>
+                    	<a className="navbar-brand text-decoration-none d-flex align-items-center py-0"><i class="fas fa-caravan display-6 ms-2 pe-3"></i><strong className="fs-2">Nomad Vanlife</strong></a>
 					</Link>
                     <button type="button" className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menuNavegacion">
                         <span className="navbar-toggler-icon"></span>
