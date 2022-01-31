@@ -1,6 +1,7 @@
 import propTypes from "prop-types";
 import React from "react";
 import "../../styles/navbar.css";
+import "../../styles/card.css";
 
 export const Card = (props) => {
 

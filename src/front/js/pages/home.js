@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
-import Map from "../component/map";
+import GoogleApiWrapper from "../component/mapa";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -11,7 +11,7 @@ export const Home = () => {
     <div className="container-fluid text-center m-0 p-0">
       {/* ------------------------------------------------------------------------------ */}
       <div
-        className="container-fluidp-0"
+        className="container-fluid p-0"
         style={{ width: "100%", height: "90vh" }}
       >
         {/* <button className="rounded-button-left">
@@ -20,7 +20,10 @@ export const Home = () => {
         <button className="rounded-button-right">
           <ion-icon name="map-outline"></ion-icon>
         </button> */}
-        <Map />
+        <GoogleApiWrapper locations={[
+          { lat: 42.12426288416609, lng: -0.06539160031352775 },
+          { lat: 42.16462646659714, lng: -0.07810645938338229 }, //Aquí tendré que añadir las localizaciones desde mi base de datos
+        ]}/>
       </div>
       {/* ------------------------------------------------------------------------------ */}
       <div className="alert alert-info">
