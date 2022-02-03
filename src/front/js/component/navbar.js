@@ -33,7 +33,9 @@ export const Navbar = () => {
                         <ul className="navbar-nav ms-3">
                             <li className="nav-item"><a className="nav-link" href="#">Calendario</a></li>
                             <li className="nav-item"><a className="nav-link" href="#">Diario</a></li>
-                            <li className="nav-item"><a className="nav-link" href="#">Ruta</a></li>
+                            <Link className="text-decoration-none" to="/login1">
+                                <li className="nav-item"><a className="nav-link" href="#">Ruta</a></li>
+                            </Link>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                     Mapa
