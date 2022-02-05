@@ -23,9 +23,9 @@ export const Navbar = () => {
         <div className="containter fluid">
             <nav className="navbar navbar-expand-md navbar-light bg-light border-3 border-bottom border-primary">
                 <div className="container-fluid">
-					<Link className="text-decoration-none" to="/">
-                    	<a className="navbar-brand d-flex align-items-center py-0"><i class="fas fa-caravan display-6 ms-2 pe-3"></i><strong className="fs-2">Nomad Vanlife</strong></a>
-					</Link>
+                    <Link className="text-decoration-none" to="/">
+                        <a className="navbar-brand d-flex align-items-center py-0"><i class="fas fa-caravan display-6 ms-2 pe-3"></i><strong className="fs-2">Nomad Vanlife</strong></a>
+                    </Link>
                     <button type="button" className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menuNavegacion">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -41,10 +41,12 @@ export const Navbar = () => {
                                     Mapa
                                 </a>
                                 <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="#">Vista Mapa</a></li>
-									<Link className="text-decoration-none" to="/cards">
-										<li><a className="dropdown-item">Vista Tarjetas</a></li>
-									</Link>
+                                    <Link className="text-decoration-none" to="/cardsGrid">
+                                        <li><a className="dropdown-item" href="#">Vista Mapa (mosaico)</a></li>
+                                    </Link>
+                                    <Link className="text-decoration-none" to="/cards">
+                                        <li><a className="dropdown-item">Vista Tarjetas</a></li>
+                                    </Link>
                                 </ul>
                             </li>
                         </ul>
