@@ -1,5 +1,10 @@
 section {
-    background-color: #508bfc;
+    /* background-color: #508bfc; */
+    background-image: url("https://images.unsplash.com/photo-1518727009842-83f936fd395b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80");
+    /* src/front/img/NomadVanlifeBg.jpeg */
+    /* background: url(/../img/rigo-baby.jpeg) no-repeat center center fixed; */
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .card{

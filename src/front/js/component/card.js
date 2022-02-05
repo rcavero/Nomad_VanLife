@@ -1,6 +1,6 @@
 import propTypes from "prop-types";
 import React from "react";
-import "../../styles/navbar.css";
+import "../../styles/card.css";
 
 export const Card = (props) => {
 
@@ -38,7 +38,7 @@ export const Card = (props) => {
     }
 
     return (
-        <div className="container-fluid pt-3">
+        <div className="container-fluid pt-0">
             {/* <div className="card mb-3 col-lg-3 col-md-10 col-sm-12 col-xs-12 m-auto bg-light shadow border border-secondary"> */}
             <div className="card mb-3 m-auto bg-light h-100 shadow border border-secondary">
                 <img src={props.picture} className="card-img-top" alt="..." />
