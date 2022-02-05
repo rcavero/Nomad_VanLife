@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 export const FilterModal = () => {
     return (
         <div className="container-fluid mt-3 mb-0 d-grid justify-content-end pe-2">
-            <button type="button" className="btn btn-primary right-button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-filter pe-2"></i>Filter</button>
+            <button type="button" className="btn btn-primary right-button border border-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-filter pe-2"></i>Filter</button>
 			{/* <!-- Modal --> */}
 			<div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div className="modal-dialog">

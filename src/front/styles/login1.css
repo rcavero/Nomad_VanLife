@@ -10,3 +10,26 @@ section {
 .card{
     border-radius: 1rem;
 }
+
+/* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
+@media screen and (min-width: 601px) {
+    h1 {
+        font-size: 4.5vw;
+    }
+  }
+  
+  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+  @media screen and (max-width: 600px) {
+    h1 {
+        font-size: 9.5vw;
+    }
+  }
+
+h1{
+    /* font-size: 3.5em; */
+    color: azure;
+}
+
+title{
+    /* font-size: 100px */
+}

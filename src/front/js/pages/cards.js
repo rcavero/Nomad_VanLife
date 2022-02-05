@@ -10,7 +10,7 @@ export const Cards = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="container-fluid bg-light col-xl-7 col-lg-8 col-md-12 col-sm-12 col-xs-12 pb-3">
+		<div className="container-fluid bg-light col-xl-7 col-lg-8 col-md-12 col-sm-12 col-xs-12 pt-3 pb-3">
 			{/* <div className="container-fluid m-auto m-0 p-0">
 				<FilterModal />
 			</div> */}

@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Card } from "../component/card";
 import { FilterModal } from "../component/filterModal";
+import "../../styles/cardsGrid.css";
 
 export const CardsGrid = () => {
     const { store, actions } = useContext(Context);
 
     return (
-        <div className="container-fluid bg-light pb-3 col-lg-10 col-md-12 col-sm-12 col-xs-12 m-auto">
+        <div className="container-fluid bg-light pb-3 col-lg-10 col-md-12 col-sm-12 col-xs-12 m-auto main-container-sub">
             <div className="container-fluid m-0 p-0">
                 <FilterModal />
             </div>

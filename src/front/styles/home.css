@@ -5,6 +5,13 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+.card-map-preview{
+  z-index: 4;
+  top: 80%;
+  left: 2%;
+  right: 2%
+}
+
 .rounded-button-left {
   width: 60px;
   height: 60px;
