@@ -23,9 +23,9 @@ export const Home = () => {
         <div className="card card-map-preview mb-3 min-vw-400 mh-200 col-xl-3 col-lg-4 col-md-5 col-sm-8 shadow border border-secondary position-absolute">
           <div className="row g-0">
             <div className="col-4 d-flex align-items-center">
-              <img src="https://asa.com/wordpress/wp-content/uploads/2018/10/News-2018-10-Buying-First-Sailboat-Featured-1024x512.jpg" class="img-fluid rounded-start" alt="..."/>
+              <img className="rounded-start" style={{ 'object-fit': 'cover', 'height': '100%', 'width': '100%' }} src="https://asa.com/wordpress/wp-content/uploads/2018/10/News-2018-10-Buying-First-Sailboat-Featured-1024x512.jpg" alt="..." />
             </div>
-            <div className="col-md-8">
+            <div className="col-8">
               <div className="card-body">
                 <h5 className="card-title"><i class="fas fa-laptop-house text-success me-2"></i>Some place in Guara</h5>
                 <p className="card-text text-primary mb-0">

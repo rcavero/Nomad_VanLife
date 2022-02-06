@@ -12,6 +12,12 @@
   right: 2%
 }
 
+.image-preview{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
 .rounded-button-left {
   width: 60px;
   height: 60px;

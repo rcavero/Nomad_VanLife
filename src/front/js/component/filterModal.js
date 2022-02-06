@@ -16,7 +16,7 @@ export const FilterModal = () => {
 						</div>
 						<div className="modal-body">
 							{/* ------------------------------ */}
-							<h5 className="mb-0 p-0">Rate</h5>
+							<h5 className="mb-0 p-0">Rating</h5>
 							<hr class="border-2 border-top border-secondary"></hr>
 							<div class="form-check">
 								<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
