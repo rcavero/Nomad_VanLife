@@ -8,6 +8,7 @@ import { Cards } from "./pages/cards";
 import { CardsGrid } from "./pages/cardsGrid";
 import { Login1 } from "./pages/login1";
 import { Register } from "./pages/register"
+import  WhishList  from "./pages/wishList";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
@@ -43,6 +44,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/cardsGrid">
               <CardsGrid />
+            </Route>
+            <Route exact path="/whishList">
+              <WhishList />
             </Route>
             <Route exact path="/single/:theid">
               <Single />
