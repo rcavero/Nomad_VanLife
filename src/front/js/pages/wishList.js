@@ -30,18 +30,19 @@ const WhishList = () => {
 	};
 
 	const deleteTodo = (listUpdated) => {
-		setTodos(listUpdated);
 		fetch("https://assets.breatheco.de/apis/fake/todos/user/RCavero", {
 			method: "PUT",
 			body: JSON.stringify(listUpdated),
 			headers: {
 				"Content-Type": "application/json",
 			},
-		});
+		})
+		setTodos(listUpdated)
 	};
 
 	return (
-		<div className="container-fluid text-center col-xl-6 col-lg-7 col-md-8 col-sm-10 col-12 mt-5 mb-5">
+		<div className="container-fluid">
+		<div className="container-fluid text-center col-xl-6 col-lg-7 col-md-8 col-sm-10 col-12 mt-5 mb-5 pb-5 pt-3">
 			<h1 className="mb-5">Wish List</h1>
 			
 			<div className="input-group mb-4">
@@ -65,6 +66,7 @@ const WhishList = () => {
 					>Add Task</button>
 			</div>
 			<Todos listTodos={todos} functionDelete={deleteTodo} />
+		</div>
 		</div>
 	);
 };
