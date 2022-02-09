@@ -61,15 +61,19 @@ class NomadVanPlace(db.Model):
     def __repr__(self):
         return '<NomadVanPlace %r>' % self.title
 
+    # Aquí ponemos lo que se va a mostrar
     def serialize(self):
         return {
             "id": self.id,
-            "user": self.user.id,
-            # "kind_of_place": self.kind_of_place.id,
-            "services": self.services.id,
+            "user": self.user,
+            "kind_of_place": self.kind_place.serialize(),
+            # serialize() nos da toda la info del modelo al que hace referencia
+            # .name nos da sólo la info que le ponemos después del punto
+            # .id
+            "services": self.services_place.serialize(),
             "title": self.title,
             "description": self.description,
-            "location": self.location.id,
+            "location": self.location_place.serialize(),
             "rating": self.rating,
             "date": self.date,
 
