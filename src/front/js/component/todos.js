@@ -9,7 +9,9 @@ export const Todos = (props) => {
 		const listTodosUpdated = props.listTodos;
 		listTodosUpdated.splice(index, 1);
 		console.log(listTodosUpdated);
-		props.functionDelete(listTodosUpdated);
+		props.functionDelete(index);
+		//props.functionDelete(listTodosUpdated)
+		//Ahora lo que estamos haciendo es simplemente pasarle el index a wishList
 	};
 
 	return (
@@ -38,7 +40,7 @@ export const Todos = (props) => {
 								{value.label}
 								<button
 									type="button"
-									class="btn-close"
+									className="btn-close"
 									aria-label="Close"
 									onClick={() => {
 										deleteTodo(index);
