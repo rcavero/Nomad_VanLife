@@ -44,7 +44,7 @@ export const Navbar = () => {
                                     <Link className="text-decoration-none" to="/cardsGrid">
                                         <li className="dropdown-item">Vista Mapa (mosaico)</li>
                                     </Link>
-                                    <Link className="text-decoration-none" to="/cards">
+                                    <Link className="text-decoration-none" to="/cards/1">
                                         <li className="dropdown-item">Vista Tarjetas</li>
                                     </Link>
                                 </ul>
