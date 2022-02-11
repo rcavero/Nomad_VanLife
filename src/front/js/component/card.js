@@ -1,8 +1,22 @@
 import propTypes from "prop-types";
-import React from "react";
+import React, {useState, useEffect, useContext} from "react";
+import {Context} from "../store/appContext"
 import "../../styles/card.css";
+import { useParams } from "react-router-dom";
 
 export const Card = (props) => {
+
+    // const [nomadVanPlace, setNomadVanPlace] = useState({})
+
+    // const placeId = useParams().placeId
+
+    // const {actions} = useContext(Context)
+    // useEffect(()=>{
+    //     actions.getNomadVanPlace(placeId).then(response =>{
+    //         console.log(response)
+    //         setNomadVanPlace(response)
+    //     })
+    // },[])
 
     const kinfOfPlace = (i) => {
         let place = ""
@@ -38,9 +52,9 @@ export const Card = (props) => {
     }
 
     return (
-        <div className="container-fluid pt-0">
+        <div className="container-fluid px-0 pt-0">
             {/* <div className="card mb-3 col-lg-3 col-md-10 col-sm-12 col-xs-12 m-auto bg-light shadow border border-secondary"> */}
-            <div className="card mb-3 m-auto bg-light h-100 shadow border border-secondary">
+            <div className="card mb-3 m-auto bg-light h-100 shadow border border-secondary mx-2">
                 <img src={props.picture} className="card-img-top rounded-top" alt="..." />
                 <div className="card-body">
                     <h4 className="card-title mb-3"><i class={kinfOfPlace(props.kindPlace)}></i> {props.title}</h4>
@@ -65,7 +79,7 @@ export const Card = (props) => {
                             </h5>
                         </div>
                     </div>
-                    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                    <p className="card-text"><small className="text-muted">{props.date}</small></p>
                 </div>
             </div>
         </div>
@@ -78,5 +92,6 @@ export const Card = (props) => {
         services: propTypes.array,
         rate: propTypes.number,
         kindPlace: propTypes.number,
+        date: propTypes.date
     }
 }

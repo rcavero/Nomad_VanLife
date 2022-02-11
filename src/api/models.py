@@ -43,9 +43,7 @@ class KindOfPlace(db.Model):
 class NomadVanPlace(db.Model):
     __tablename__ = 'nomadvanplace'
     id = db.Column(db.Integer, primary_key=True)
-    #user = db.Column(db.String(120), unique=True, nullable=False)
-    #kind_of_place = db.Column(db.String(20), unique=True, nullable=False)
-    #location = db.Column(db.String(120), unique=False, nullable=False)
+    
     services = db.Column(db.String(20), unique=True, nullable=False)
     title = db.Column(db.String(120), unique=False, nullable=False)
     description = db.Column(db.String(500), unique=False, nullable=False)
@@ -67,6 +65,7 @@ class NomadVanPlace(db.Model):
             "id": self.id,
             "user": self.user,
             "kind_of_place": self.kind_place.serialize(),
+            "image": "https://i.blogs.es/e32e91/trucos-enfocar-fotografia-paisaje-01/1366_2000.jpg",
             # serialize() nos da toda la info del modelo al que hace referencia
             # .name nos da sólo la info que le ponemos después del punto
             # .id

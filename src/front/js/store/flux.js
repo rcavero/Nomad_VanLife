@@ -28,6 +28,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ message: data.message }))
 					.catch(error => console.log("Error loading message from backend", error));
 			},
+			getNomadVanPlaceList: () => {
+				// fetching data from the backend
+				const data = fetch(process.env.BACKEND_URL + "/api/places-list") // otra forma es: ..."/places-list/" + cardId)
+					.then(resp => resp.json())
+					.catch(error => console.log("Error loading Nomad Van Place List from backend", error));
+					// .then(resp => {nomadVanPlace: resp})
+					return data
+			},
+			getNomadVanPlace: (cardId) => {
+				// fetching data from the backend
+				const data = fetch(process.env.BACKEND_URL + `/api/places-list/${cardId}`) // otra forma es: ..."/places-list/" + cardId)
+					.then(resp => resp.json())
+					.catch(error => console.log("Error loading Nomad Van Place from backend", error));
+					// .then(resp => {nomadVanPlace: resp})
+					return data
+			},
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

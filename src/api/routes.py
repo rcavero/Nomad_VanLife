@@ -53,9 +53,16 @@ def protected():
 @api.route("/places-list", methods=["GET"])
 # @jwt_required()
 def places_list():
-    # Access the identity of the current user with get_jwt_identity
-    # current_user_id = get_jwt_identity()
     nomadvanplace = NomadVanPlace.query.all() #Seleccionamos todos los elementos del modelo NomadVanPlace
     data = [item.serialize() for item in nomadvanplace] #Ver clase (y texto) de front-back para entenderlo bien
+    
+    return jsonify(data), 200
+# --------------------------------------------------------------------------------
+# Creamos un servicio para recibir toda la información de un Nomad Van Place
+@api.route("/places-list/<int:placeId>", methods=["GET"])
+# @jwt_required()
+def getNomadVanPlace(placeId): # Le pasamos a nuestra función el ID del Nomad Van Place que queremos mostrar
+    nomadvanplace = NomadVanPlace.query.get(placeId) #Seleccionamos la info del NOmad Van Place con ID = a la que hemos seleccionado en la ruta
+    data = nomadvanplace.serialize() #Ver clase (y texto) de front-back para entenderlo bien
     
     return jsonify(data), 200
