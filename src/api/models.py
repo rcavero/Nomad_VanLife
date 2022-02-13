@@ -39,7 +39,6 @@ class KindOfPlace(db.Model):
             # do not serialize the password, its a security breach
         }
 
-
 class NomadVanPlace(db.Model):
     __tablename__ = 'nomadvanplace'
     id = db.Column(db.Integer, primary_key=True)
@@ -53,8 +52,9 @@ class NomadVanPlace(db.Model):
     user = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     location = db.Column(db.Integer, db.ForeignKey('locations.id'), nullable=False)
     kindofplace = db.Column(db.Integer, db.ForeignKey('kindofplace.id'), nullable=False)
-    services = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=False)
-
+    services = db.relationship('ServicesRelationship', backref='services_place', lazy=True)
+    
+    
 
     def __repr__(self):
         return '<NomadVanPlace %r>' % self.title
@@ -69,24 +69,29 @@ class NomadVanPlace(db.Model):
             # serialize() nos da toda la info del modelo al que hace referencia
             # .name nos da sólo la info que le ponemos después del punto
             # .id
-            "services": self.services_place.serialize(),
+            "services": [item.nomadvanplace_place.serialize() for item in self.services], #recorremos todos los services de este NomadVanPlace y para cada uno de ellos mostramos el objeto con su información del Servicio
             "title": self.title,
             "description": self.description,
             "location": self.location_place.serialize(),
             "rating": self.rating,
-            "date": self.date,
+            "date": self.date.strftime("%d/%m/%Y"),
 
             # do not serialize the password, its a security breach
         }
 
-
+class ServicesRelationship(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    services_id = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=False)
+    nomadvanplace_id = db.Column(db.Integer, db.ForeignKey('nomadvanplace.id'), nullable=False)
 
 class Services(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
     icon = db.Column(db.String(80), unique=True, nullable=False)
-
-    nomadvanplace = db.relationship('NomadVanPlace', backref='services_place', lazy=True)
+    # nomadvanplace = db.Column(db.Integer, db.ForeignKey('nomadvanplace.id'), nullable=True) #Tenemos que cambiar esto a False
+                                                                             #!!!!!!!!!!!!!!!!!!!!!!!!!
+    # nomadvanplace = db.relationship('NomadVanPlace', backref='services_place', lazy=True)
+    nomadvanplace = db.relationship('ServicesRelationship', backref='nomadvanplace_place', lazy=True)
 
     def __repr__(self):
         return '<Services %r>' % self.name

@@ -29,7 +29,7 @@ export const CardsGrid = () => {
                 {nomadVanPlaceList.map((value, index) => {
                     return (
                         <div className="container-fluid mx-0 px-0 mt-3" key={index}>
-                            <Card title={value.title} adress={`lat: ${value.location} lng: ${value.location}`} picture={value.image} description={value.description} services={[1, 1, 1, 1]} rate={value.rating} kindPlace={value.kind_of_place} date={value.date}/>
+                            <Card title={value.title} adress={`lat: ${value.location.lat} lng: ${value.location}`} picture={value.image} description={value.description} services={value.services} rate={value.rating} kindPlace={value.kind_of_place.icon} date={value.date}/>
                         </div>
                     )
                 })}

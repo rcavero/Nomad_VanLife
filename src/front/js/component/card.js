@@ -18,19 +18,20 @@ export const Card = (props) => {
     //     })
     // },[])
 
-    const kinfOfPlace = (i) => {
-        let place = ""
-        if (i==0){
-            place = "fas fa-campground text-success"
-        }else if (i==1){
-            place = "fas fa-caravan text-success"
-        }else if (i==2){
-            place = "fas fa-laptop-house text-success"
-        }else{
-            place = "fas fa-question text-success"
-        }
-        return place
-    }
+    // No es necesario porque tenemos guardado el icono en la base de datos y lo traemos directamente desde allí
+    // const kinfOfPlace = (i) => {
+    //     let place = ""
+    //     if (i==0){
+    //         place = "fas fa-campground text-success"
+    //     }else if (i==1){
+    //         place = "fas fa-caravan text-success"
+    //     }else if (i==2){
+    //         place = "fas fa-laptop-house text-success"
+    //     }else{
+    //         place = "fas fa-question text-success"
+    //     }
+    //     return place
+    // }
     
     const showService = (n) => {
         let show=""
@@ -57,16 +58,20 @@ export const Card = (props) => {
             <div className="card mb-3 m-auto bg-light h-100 shadow border border-secondary mx-2">
                 <img src={props.picture} className="card-img-top rounded-top" alt="..." />
                 <div className="card-body">
-                    <h4 className="card-title mb-3"><i class={kinfOfPlace(props.kindPlace)}></i> {props.title}</h4>
+                    <h4 className="card-title mb-3"><i class={props.kindPlace}></i> {props.title}</h4>
                     <p className="card-text"><i class="fas fa-map-marker-alt text-danger"></i> {props.adress}</p>
                     <p className="card-text">{props.description}</p>
                     <div className="container-fluid d-flex justify-content-between ps-0 mb-3">
                         <div>
                             <h5 className="card-text text-primary">
-                                <span className={showService(0)}><i class="fas fa-shower me-2"></i></span>
+                                {/* Hacemos un un if ternario para comprobar que el array que nos estamos trayendo de la BD existe (se ha cargado), porque si no nos daría un error y no cargaría la página */}
+                                {props.services ? props.services.map((item, index)=>{
+                                    return(<i key={index} className={item.icon}></i>)
+                                }):""}
+                                {/* <span className={showService(0)}><i class="fas fa-shower me-2"></i></span>
                                 <span className={showService(1)}><i class="fas fa-laptop me-2"></i></span>
                                 <span className={showService(2)}><i class="fas fa-gas-pump me-2"></i></span>
-                                <span className={showService(3)}><i class="fas fa-bed"></i></span>
+                                <span className={showService(3)}><i class="fas fa-bed"></i></span> */}
                             </h5>
                         </div>
                         <div>
