@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Card } from "../component/card";
 import { FilterModal } from "../component/filterModal";
+import { NewPlaceForm } from "../component/newPlaceForm";
 import "../../styles/cardsGrid.css";
 
 export const CardsGrid = () => {
@@ -21,7 +22,8 @@ export const CardsGrid = () => {
 
     return (
         <div className="container-fluid bg-light pb-3 col-lg-10 col-md-12 col-sm-12 col-xs-12 m-auto main-container-sub">
-            <div className="container-fluid m-0 p-0">
+            <div className="container-fluid d-flex m-0 p-0">
+                <NewPlaceForm />
                 <FilterModal />
             </div>
             {/* <div className="container-fluid col-lg-10 col-md-10 col-sm-12 col-xs-12 m-auto m-0 p-0"> */}
