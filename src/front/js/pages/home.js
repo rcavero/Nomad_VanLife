@@ -5,6 +5,7 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { CardPreview } from "../component/cardPreview";
 import Map from "../component/map";
+// Aquí puedo cambiar el componente de mapa que se muestra 
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
