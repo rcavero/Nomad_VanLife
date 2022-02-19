@@ -31,21 +31,23 @@ export const Navbar = () => {
                     </button>
                     <div id="menuNavegacion" className="collapse navbar-collapse">
                         <ul className="navbar-nav ms-3">
-                            <li className="nav-item"><a className="nav-link" href="#">Mapa</a></li>
-                            <li className="nav-item"><a className="nav-link" href="#">Diario</a></li>
+                            <Link className="text-decoration-none" to="/">
+                                <li className="nav-item nav-link">Mapa</li>
+                            </Link>
+                            <li className="nav-item"><a className="nav-link disabled" href="#">Diario</a></li>
                             <Link className="text-decoration-none" to="/whishList">
                                 <li className="nav-item nav-link">Wish List</li>
                             </Link>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                    Mapa
+                                    Vistas
                                 </a>
                                 <ul className="dropdown-menu">
                                     <Link className="text-decoration-none" to="/cardsGrid">
-                                        <li className="dropdown-item">Vista Mapa (mosaico)</li>
+                                        <li className="dropdown-item">Vista Tarjetas</li>
                                     </Link>
                                     <Link className="text-decoration-none" to="/cards/1">
-                                        <li className="dropdown-item">Vista Tarjetas</li>
+                                        <li className="dropdown-item">Vista Individual</li>
                                     </Link>
                                 </ul>
                             </li>

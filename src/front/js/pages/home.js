@@ -4,6 +4,8 @@ import propTypes from "prop-types";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { CardPreview } from "../component/cardPreview";
+import { NewPlaceFormMap } from "../component/newPlaceFormMap";
+import { FilterModalMap } from "../component/filterModalMap";
 import Map from "../component/map";
 // Aquí puedo cambiar el componente de mapa que se muestra 
 
@@ -16,7 +18,11 @@ export const Home = () => {
       <div
         className="container-fluid p-0"
         style={{ width: "100%", height: "90vh" }}
-      >
+      >   
+      <div className="container-fluid position-absolute buttonOverMap mt-2">
+          <NewPlaceFormMap />
+          <FilterModalMap />
+      </div>
         <CardPreview title="Some place in Guara" kindPlace={2} services={[1, 1, 1, 1]} rate={4} picture="https://asa.com/wordpress/wp-content/uploads/2018/10/News-2018-10-Buying-First-Sailboat-Featured-1024x512.jpg"/>
         <Map />
       </div>

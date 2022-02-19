@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 
-export const NewPlaceForm = () => {
+export const NewPlaceFormMap = () => {
     return (
-        <div className="container-fluid mt-3 mb-0 d-grid justify-content-start pe-2">
-            <button type="button" className="btn btn-primary right-button border border-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal1"><i class="fas fa-plus pe-2"></i>New NomadVanPlace</button>
+        <div className="container-fluid mt-2 d-inline">
+            <button type="button" className="btn btn-primary right-button border border-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal1"><i class="fas fa-plus pe-2"></i>Add</button>
             {/* <!-- Modal --> */}
             <div className="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
