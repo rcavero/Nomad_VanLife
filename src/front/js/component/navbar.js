@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useContext} from "react";
+import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
 // export const Navbar = () => {
@@ -19,6 +20,7 @@ import { Link } from "react-router-dom";
 // };
 
 export const Navbar = () => {
+    const { store, actions } = useContext(Context);
     return (
         <div className="containter fluid">
             <nav className="navbar navbar-expand-md navbar-light bg-light border-3 border-bottom border-primary">
@@ -61,9 +63,14 @@ export const Navbar = () => {
                         </ul>
                             <div className="float-end ms-auto">
                                 <form className="container-fluid text-center">
-                                    <Link className="text-decoration-none" to="/login1">
-                                        <button className="btn btn-outline-success me-0" type="button">Login</button>
-                                    </Link>
+                                    {!store.token ? (
+                                        <Link className="text-decoration-none" to="/login1">
+                                            <button className="btn btn-outline-success me-0" type="button">Login</button>
+                                        </Link>
+                                    ) : (
+                                        <button className="btn btn-outline-danger me-0" type="button" onClick={() => actions.logout() }>Logout</button>
+                                    )}
+                                    
                                 </form>
                             </div>
                     </div>
