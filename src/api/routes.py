@@ -73,3 +73,18 @@ def getNomadVanPlace(placeId): # Le pasamos a nuestra función el ID del Nomad V
     data = nomadvanplace.serialize() #Ver clase (y texto) de front-back para entenderlo bien
     
     return jsonify(data), 200
+
+# --------------------------------------------------------------------------------
+# endpoint hello example with authenticated request
+@api.route("/hello", methods=["GET"])
+@jwt_required()
+def get_hello():
+
+    email = get_jwt_identity()
+    dictionary = {
+        "message" : "this is the message from the authenticated request... YES! " + str(email)
+        # Question: why get_jwt_identity() its giving back the id but not the email?
+    }
+
+    return jsonify(dictionary)
+# --------------------------------------------------------------------------------
