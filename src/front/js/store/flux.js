@@ -42,7 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				}
 				try{
-					const resp = await fetch('https://3001-rcavero-nomadvanlife-b0kdaupv5ws.ws-eu33.gitpod.io/api/token', opts)
+					const resp = await fetch(process.env.BACKEND_URL+'/api/token', opts)
 				if (resp.status !== 200) {
 					alert("There has been some error");
 					return false;
@@ -62,6 +62,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 				sessionStorage.removeItem("token");
 				setStore({ token: null });
 			},
+			// -----------------------------------------------------------------------
+			// Create a new NomadVanPlace with the info caming from the form
+			createNomadVanPlace: (title, picture, location, kindOfPlace, services, description, rating) => {
+				const store = getStore();
+				const data = {
+					title: title,
+					picture: picture,
+					location: location,
+					kindOfPlace: kindOfPlace,
+					services: services,
+					description: description,
+					rating: rating
+				}
+				const opts = {
+					method: "POST",
+					body: JSON.stringify(data),
+					headers: {
+						"Authorization": "Bearer " + store.token
+					}
+				}
+				// fetching data from the backend
+				fetch(process.env.BACKEND_URL + "/api/newNomadVanPlace", opts)
+					.then(resp => resp.json())
+					// .then(data => setStore({ message: data.message }))
+					.catch(error => console.log("Error loading message from backend", error));
+			},
+			// ------------------------------------------------------------------------
 			// Example for making an authenticated request ¡¡¡IMPORTANT!!!
 			getMessage: () => {
 				const store = getStore();

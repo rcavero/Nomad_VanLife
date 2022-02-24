@@ -10,6 +10,7 @@ from api.utils import APIException, generate_sitemap
 from api.models import db
 from api.routes import api
 from api.admin import setup_admin
+from datetime import timedelta # this is for not expire the login session in x hours
 
 # --------------------------------------------------------------------------
 # Vamos importando las librerias necesarias y también lo que necesitamos de la DB (models)
@@ -25,6 +26,7 @@ app.url_map.strict_slashes = False
 # ------------------------------------------------
 # Creamos la instancia para jwt
 jwt = JWTManager(app)
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1) # not expiring the login session in 1 hour
 # ------------------------------------------------
 
 # database condiguration

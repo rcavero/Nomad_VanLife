@@ -2,8 +2,10 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, NomadVanPlace
+from api.models import db, User, NomadVanPlace, Locations, Services, ServicesRelationship, KindOfPlace
 from api.utils import generate_sitemap, APIException
+import json
+import datetime
 
 # --------------------------------------------------------------------------
 # Vamos importando las librerias necesarias y también lo que necesitamos de la DB (models)
@@ -45,6 +47,42 @@ def create_token():
     # create a new token with the user id inside
     access_token = create_access_token(identity=user.id)
     return jsonify({ "token": access_token, "user_id": user.id })
+    # --------------------------------------------------------------------------------
+# Vamos a crear el servicio de CREAR un nuevo NomadVanPlace
+@api.route("/newNomadVanPlace", methods=["POST"])
+@jwt_required()
+def create_nomadvanplace():
+    user = get_jwt_identity()
+    body = json.loads(request.data) # con request.data recibimos los datos y con json.loads cargamos los datos en formato original
+    print(body)
+    newLocation = Locations(lat=body.get('location')[0],lng=body.get('location')[1])
+    db.session.add(newLocation)
+    db.session.commit()
+    nomadvanplace = NomadVanPlace(
+        user = user,
+        title = body.get('title'),
+        # image = body.get('picture'), la dejamos comentada porque no la hemos añadido en la db models.py
+        location = newLocation.id,
+        kindofplace = body.get('kindOfPlace'),
+        # services = body.get('services'),
+        description = body.get('description'),
+        rating = body.get('rating'),
+        date = datetime.datetime.now()
+    )
+    db.session.add(nomadvanplace)
+    db.session.commit()
+    for service in body.get('services'):
+        newPlaceServices = ServicesRelationship(nomadvanplace_id = nomadvanplace.id, services_id = service)
+        db.session.add(newPlaceServices)
+        db.session.commit()
+    print(nomadvanplace)
+    print(nomadvanplace.serialize())
+
+    if nomadvanplace is None:
+        # the nomadvanplace was not found on the database
+        return jsonify({"msg": "The new NomadVanPlace was not created"}), 401
+    
+    return jsonify(nomadvanplace.serialize())
 # --------------------------------------------------------------------------------
 # Creamos un servicio para endpoints privados con jwt_required
 @api.route("/area-privada", methods=["GET"])
@@ -82,7 +120,7 @@ def get_hello():
 
     email = get_jwt_identity()
     dictionary = {
-        "message" : "this is the message from the authenticated request... YES! " + str(email)
+        "message" : "this is the message from the authenticated request from user "+str(email)+ "... YES!"
         # Question: why get_jwt_identity() its giving back the id but not the email?
     }
 

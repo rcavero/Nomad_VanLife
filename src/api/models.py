@@ -45,6 +45,7 @@ class NomadVanPlace(db.Model):
     
     services = db.Column(db.String(20), unique=True, nullable=False)
     title = db.Column(db.String(120), unique=False, nullable=False)
+    # image = db.Column(db.String(500), unique=False, nullable=True)
     description = db.Column(db.String(500), unique=False, nullable=False)
     rating = db.Column(db.Float, unique=False, nullable=True)
     date = db.Column(db.Date, unique=False, nullable=False)
