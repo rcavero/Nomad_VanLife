@@ -48,6 +48,23 @@ def create_token():
     access_token = create_access_token(identity=user.id)
     return jsonify({ "token": access_token, "user_id": user.id })
     # --------------------------------------------------------------------------------
+# Creating a new endpoint for add a new user to the DB
+@api.route("/registerUser", methods=["POST"])
+def register_user():
+    body = json.loads(request.data) # con request.data recibimos los datos y con json.loads cargamos los datos en formato original
+    print(body)
+    newUser = User(email=body.get('email'),password=body.get('password'))
+    db.session.add(newUser)
+    db.session.commit()
+    print(newUser)
+    print(newUser.serialize())
+
+    if newUser is None:
+        # the nomadvanplace was not found on the database
+        return jsonify({"msg": "The new user was not created"}), 401
+    
+    return jsonify(newUser.serialize())
+
 # Vamos a crear el servicio de CREAR un nuevo NomadVanPlace
 @api.route("/newNomadVanPlace", methods=["POST"])
 @jwt_required()

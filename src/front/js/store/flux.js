@@ -62,6 +62,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				sessionStorage.removeItem("token");
 				setStore({ token: null });
 			},
+			// function to register a new user with email and password
+			register: (email, password) => {
+				const data = {
+					email: email,
+					password: password
+				}
+				const opts = {
+					method: "POST",
+					body: JSON.stringify(data),
+				}
+				// fetching data from the backend
+				fetch(process.env.BACKEND_URL + "/api/registerUser", opts)
+					.then(resp => resp.json())
+					// .then(data => setStore({ message: data.message }))
+					.catch(error => console.log("There was some error creating the new user", error));	
+			},
 			// -----------------------------------------------------------------------
 			// Create a new NomadVanPlace with the info caming from the form
 			createNomadVanPlace: (title, picture, location, kindOfPlace, services, description, rating) => {
