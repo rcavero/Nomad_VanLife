@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import Map from "./mapRegister";
+// import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export const NewPlaceForm = () => {
     const { store, actions } = useContext(Context);
@@ -15,6 +16,7 @@ export const NewPlaceForm = () => {
     // const token = sessionStorage.getItem("token");
     // const history = useHistory();
 
+
     // useEffect(()=>{
     //     console.log("Hola mundo")
     //     setLat(store.currentLocation[0])
@@ -23,6 +25,7 @@ export const NewPlaceForm = () => {
 
     const handleClick = () => {
         actions.createNomadVanPlace(title, picture, [lat,lng], kindOfPlace, services, description, rating);
+        // history.push("/")
     }
 
     return (

@@ -27,7 +27,7 @@ export const Cards = () => {
 			{/* <div className="container-fluid m-auto m-0 p-0">
 				<FilterModal />
 			</div> */}
-			<Card title={nomadVanPlace.title} adress={`lat: ${nomadVanPlace.location ? nomadVanPlace.location.lat : ""} lng: ${nomadVanPlace.location ? nomadVanPlace.location.lng : ""}`} picture={nomadVanPlace.image} description={nomadVanPlace.description} services={nomadVanPlace.services} rate={nomadVanPlace.rating} kindPlace={nomadVanPlace.kind_of_place ? nomadVanPlace.kind_of_place.icon : "fas fa-question text-success"} date={nomadVanPlace.date}/>
+			<Card title={nomadVanPlace.title} adress={`Lat: ${nomadVanPlace.location ? nomadVanPlace.location.lat.toFixed(5) : ""}  - Lng: ${nomadVanPlace.location ? nomadVanPlace.location.lng.toFixed(5) : ""}`} picture={nomadVanPlace.image} description={nomadVanPlace.description} services={nomadVanPlace.services} rate={nomadVanPlace.rating} kindPlace={nomadVanPlace.kind_of_place ? nomadVanPlace.kind_of_place.icon : "fas fa-question text-success"} date={nomadVanPlace.date}/>
 			{/* <Card title="Coast SEA" adress="Cala Macarelleta / Menorca (España)" picture="https://asa.com/wordpress/wp-content/uploads/2018/10/News-2018-10-Buying-First-Sailboat-Featured-1024x512.jpg" description="Una cala preciosa en medio del Mediterráneo donde se puede pasar la noche en medio de la naturaleza." services={[1, 0, 0, 1]} rate={4} kindPlace={2} /> */}
 		</div>
 	);

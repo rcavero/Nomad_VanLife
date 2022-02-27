@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/home.css";
@@ -35,17 +35,20 @@ export const Navbar = () => {
                     <div id="menuNavegacion" className="collapse navbar-collapse">
                         <ul className="navbar-nav ms-3">
                             <Link className="text-decoration-none" to="/">
-                                <li className="nav-item nav-link">Mapa</li>
+                                <li className="nav-item nav-link">Map</li>
                             </Link>
-                            <li className="nav-item"><a className="nav-link disabled" href="#">Diario</a></li>
+                            <Link className="text-decoration-none" to="/cardsGrid">
+                                <li className="nav-item nav-link">Mosaic</li>
+                            </Link>
+                            <li className="nav-item"><a className="nav-link disabled" href="#">Diary</a></li>
                             <Link className="text-decoration-none" to="/whishList">
                                 <li className="nav-item nav-link">Wish List</li>
                             </Link>
-                            <li className="nav-item dropdown">
+                            {/* <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                     Vistas
                                 </a>
-                                <ul className="dropdown-menu" style={{zIndex: "2001"}}>
+                                <ul className="dropdown-menu" style={{ zIndex: "2001" }}>
                                     <Link className="text-decoration-none" to="/cardsGrid">
                                         <li className="dropdown-item">Vista Tarjetas</li>
                                     </Link>
@@ -53,7 +56,7 @@ export const Navbar = () => {
                                         <li className="dropdown-item">Vista Individual</li>
                                     </Link>
                                 </ul>
-                            </li>
+                            </li> */}
                             {/* <Link className="text-decoration-none" to="/login1">
                                 <li className="nav-item">
                                     <form className="container-fluid text-center">
@@ -62,18 +65,18 @@ export const Navbar = () => {
                                 </li>
                             </Link> */}
                         </ul>
-                            <div className="float-end ms-auto">
-                                <form className="container-fluid text-center">
-                                    {!store.token ? (
-                                        <Link className="text-decoration-none" to="/login1">
-                                            <button className="btn btn-outline-success me-0" type="button">Login</button>
-                                        </Link>
-                                    ) : (
-                                        <button className="btn btn-outline-danger me-0" type="button" onClick={() => actions.logout() }>Logout</button>
-                                    )}
-                                    
-                                </form>
-                            </div>
+                        <div className="float-end ms-auto">
+                            <form className="container-fluid text-center">
+                                {!store.token ? (
+                                    <Link className="text-decoration-none" to="/login1">
+                                        <button className="btn btn-outline-success me-0" type="button">Login</button>
+                                    </Link>
+                                ) : (
+                                    <button className="btn btn-outline-danger me-0" type="button" onClick={() => actions.logout()}>Logout</button>
+                                )}
+
+                            </form>
+                        </div>
                     </div>
                 </div>
             </nav>

@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 export const FilterModalMap = () => {
 	const [kindOfPlace, setKindOfPlace] = useState([1,2,3]);
     const [services, setServices] = useState([1,2,3,4]);
-	const [rating, setRating] = useState([3,4,5]);
+	const [rating, setRating] = useState([0,1,2,3,4,5]);
 
 	const { store, actions } = useContext(Context);
 
@@ -100,6 +100,42 @@ export const FilterModalMap = () => {
 							{/* ------------------------------ */}
 							<h5 className="p-0 mt-1">Rating</h5>
 							<hr class="border-1 border-top border-secondary mt-0 pt-0"></hr>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value={0} id="flexCheckDefault" onClick={addRating} defaultChecked/>
+								<label class="form-check-label" for="flexCheckDefault">
+									<h5 className="card-text">
+										<i class="fas fa-star text-secondary"></i>
+										<i class="fas fa-star text-secondary"></i>
+										<i class="fas fa-star text-secondary"></i>
+										<i class="fas fa-star text-secondary"></i>
+										<i class="fas fa-star text-secondary"></i>
+									</h5>
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value={1} id="flexCheckDefault" onClick={addRating} defaultChecked/>
+								<label class="form-check-label" for="flexCheckDefault">
+									<h5 className="card-text">
+										<i class="fas fa-star text-warning"></i>
+										<i class="fas fa-star text-secondary"></i>
+										<i class="fas fa-star text-secondary"></i>
+										<i class="fas fa-star text-secondary"></i>
+										<i class="fas fa-star text-secondary"></i>
+									</h5>
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value={2} id="flexCheckDefault" onClick={addRating} defaultChecked/>
+								<label class="form-check-label" for="flexCheckDefault">
+									<h5 className="card-text">
+										<i class="fas fa-star text-warning"></i>
+										<i class="fas fa-star text-warning"></i>
+										<i class="fas fa-star text-secondary"></i>
+										<i class="fas fa-star text-secondary"></i>
+										<i class="fas fa-star text-secondary"></i>
+									</h5>
+								</label>
+							</div>
 							<div class="form-check">
 								<input class="form-check-input" type="checkbox" value={3} id="flexCheckDefault" onClick={addRating} defaultChecked/>
 								<label class="form-check-label" for="flexCheckDefault">

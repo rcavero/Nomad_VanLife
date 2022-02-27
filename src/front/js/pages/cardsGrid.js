@@ -33,7 +33,7 @@ export const CardsGrid = () => {
                     return (
                         <div className="container-fluid mx-0 px-0 mt-3" key={index}>
                             <Link className="text-decoration-none texto-negro" to={`/cards/${value.id}`}>
-                                <Card title={value.title} adress={`lat: ${value.location.lat} lng: ${value.location}`} picture={value.image} description={value.description} services={value.services} rate={value.rating} kindPlace={value.kind_of_place.icon} date={value.date}/>
+                                <Card title={value.title} adress={`Lat: ${value.location.lat.toFixed(5)} | Lng: ${value.location.lng.toFixed(5)}`} picture={value.image} description={value.description} services={value.services} rate={value.rating} kindPlace={value.kind_of_place.icon} date={value.date}/>
                             </Link>
                         </div>
                     )

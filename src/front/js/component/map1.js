@@ -89,8 +89,16 @@ const Map = () => {
                 {showInfo.show && showInfo.id == index && (
                   <InfoWindow onCloseClick={onToggleOpen}>
                     <div>
-                      {value.title}
-                      <p><Link to={`/cards/${value.id}`}>Show + info</Link></p>
+                    <p className="fw-bold m-0 p-0 mb-1 fs-6">{value.title}</p>
+                      <p className="fw-bold m-0 p-0 mb-1 fs-5"><i className={value.kind_of_place.icon}></i></p>
+                      <p className="fw-bold m-0 p-0 mb-1 text-primary">
+                      {value.services.map((val,ind) => {
+                        return(
+                          <i className={val.icon} key={ind}></i>
+                        )
+                      })}
+                      </p>
+                      <p className="m-0 p-0"><Link to={`/cards/${value.id}`}>Show + info</Link></p>
                     </div>
                   </InfoWindow>
                 )}

@@ -24,7 +24,7 @@ export const Home = () => {
           <NewPlaceFormMap2 />
           <FilterModalMap />
       </div>
-        <CardPreview title="Some place in Guara" kindPlace={2} services={[1, 1, 1, 1]} rate={4} picture="https://asa.com/wordpress/wp-content/uploads/2018/10/News-2018-10-Buying-First-Sailboat-Featured-1024x512.jpg"/>
+        {/* <CardPreview title="Some place in Guara" kindPlace={2} services={[1, 1, 1, 1]} rate={4} picture="https://asa.com/wordpress/wp-content/uploads/2018/10/News-2018-10-Buying-First-Sailboat-Featured-1024x512.jpg"/> */}
         <Map />
       </div>
       {/* ------------------------------------------------------------------------------ */}
