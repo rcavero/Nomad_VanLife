@@ -5,8 +5,9 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { CardPreview } from "../component/cardPreview";
 import { NewPlaceFormMap } from "../component/newPlaceFormMap";
+import { NewPlaceFormMap2 } from "../component/newPlaceFormMap2";
 import { FilterModalMap } from "../component/filterModalMap";
-import Map from "../component/map";
+import Map from "../component/map1";
 // Aquí puedo cambiar el componente de mapa que se muestra 
 
 export const Home = () => {
@@ -20,23 +21,23 @@ export const Home = () => {
         style={{ width: "100%", height: "90vh" }}
       >   
       <div className="container-fluid position-absolute buttonOverMap mt-2">
-          <NewPlaceFormMap />
+          <NewPlaceFormMap2 />
           <FilterModalMap />
       </div>
         <CardPreview title="Some place in Guara" kindPlace={2} services={[1, 1, 1, 1]} rate={4} picture="https://asa.com/wordpress/wp-content/uploads/2018/10/News-2018-10-Buying-First-Sailboat-Featured-1024x512.jpg"/>
         <Map />
       </div>
       {/* ------------------------------------------------------------------------------ */}
-      <div className="alert alert-info">
+      {/* <div className="alert alert-info">
         {store.message ||
           "Loading message from the backend (make sure your python backend is running)..."}
-      </div>
-      <p>
+      </div> */}
+      {/* <p>
         This boilerplate comes with lots of documentation:{" "}
         <a href="https://github.com/4GeeksAcademy/react-flask-hello/tree/95e0540bd1422249c3004f149825285118594325/docs">
           Read documentation
         </a>
-      </p>
+      </p> */}
       <script
         type="module"
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"

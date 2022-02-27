@@ -19,7 +19,7 @@
 }
 
 .buttonOverMap {
-  z-index: 4;
+  z-index: 2000;
 }
 
 /* .rounded-button-left {

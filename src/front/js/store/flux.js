@@ -15,7 +15,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			// Create the variable token in the storage
-			token: null
+			token: null,
+			currentLocation: [0, 0],
+			nomadVanPlaceList: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -25,7 +27,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// This is for assign the token saved on sessionStorage to its variable on the store once the app charge
 			syncTokenFromSessionStore: () => {
 				const token = sessionStorage.getItem("token");
-				if ( token && token != "" && token != undefined){
+				if (token && token != "" && token != undefined) {
 					setStore({ token: token });
 				}
 			},
@@ -41,22 +43,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"password": password
 					})
 				}
-				try{
-					const resp = await fetch(process.env.BACKEND_URL+'/api/token', opts)
-				if (resp.status !== 200) {
-					alert("There has been some error");
-					return false;
+				try {
+					const resp = await fetch(process.env.BACKEND_URL + '/api/token', opts)
+					if (resp.status !== 200) {
+						alert("There has been some error");
+						return false;
+					}
+					const data = await resp.json();
+					console.log("This came from the backend", data);
+					sessionStorage.setItem("token", data.token);
+					setStore({ token: data.token })
+					return true;
 				}
-				const data = await resp.json();
-				console.log("This came from the backend", data);
-				sessionStorage.setItem("token", data.token);
-				setStore({ token: data.token })
-				return true;
-				}
-				catch(error){
+				catch (error) {
 					console.error("There was an error login in")
 				}
-				
+
 			},
 			logout: () => {
 				sessionStorage.removeItem("token");
@@ -76,7 +78,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(process.env.BACKEND_URL + "/api/registerUser", opts)
 					.then(resp => resp.json())
 					// .then(data => setStore({ message: data.message }))
-					.catch(error => console.log("There was some error creating the new user", error));	
+					.catch(error => console.log("There was some error creating the new user", error));
 			},
 			// -----------------------------------------------------------------------
 			// Create a new NomadVanPlace with the info caming from the form
@@ -124,8 +126,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// fetching data from the backend
 				const data = fetch(process.env.BACKEND_URL + "/api/places-list") // otra forma es: ..."/places-list/" + cardId)
 					.then(resp => resp.json())
+					.then(resp => setStore({nomadVanPlaceList: resp}))
 					.catch(error => console.log("Error loading Nomad Van Place List from backend", error));
-				// .then(resp => {nomadVanPlace: resp})
 				return data
 			},
 			getNomadVanPlace: (cardId) => {
@@ -133,6 +135,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = fetch(process.env.BACKEND_URL + `/api/places-list/${cardId}`) // otra forma es: ..."/places-list/" + cardId)
 					.then(resp => resp.json())
 					.catch(error => console.log("Error loading Nomad Van Place from backend", error));
+				// .then(resp => {nomadVanPlace: resp})
+				return data
+			},
+			filterPlaces: (kindOfPlace, services, rating) => {
+				const filter = { kindOfPlace: kindOfPlace, services: services, rating: rating }
+				const opts = {
+					method: "POST",
+					body: JSON.stringify(filter),
+				}
+				// fetching data from the backend
+				const data = fetch(process.env.BACKEND_URL + "/api/places-list-filtered", opts) // otra forma es: ..."/places-list/" + cardId)
+					.then(resp => resp.json())
+					.then(resp => setStore({nomadVanPlaceList: resp}))
+					.catch(error => console.log("Error loading Nomad Van Place List from backend", error));
 				// .then(resp => {nomadVanPlace: resp})
 				return data
 			},

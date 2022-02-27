@@ -120,6 +120,19 @@ def places_list():
     
     return jsonify(data), 200
 # --------------------------------------------------------------------------------
+# Creamos un servicio para recibir una lista de todos los Nomad Val Places que cumplen con el filtro
+@api.route("/places-list-filtered", methods=["POST"])
+# @jwt_required()
+def places_list_filtered():
+    body = json.loads(request.data)
+    relationServices = ServicesRelationship.query.filter(ServicesRelationship.services_id.in_(body.get("services")))
+    relationServicesIds = [service.nomadvanplace_id for service in relationServices]
+    #nomadvanplace = NomadVanPlace.query.all() Seleccionamos todos los elementos del modelo NomadVanPlace
+    nomadvanplace = NomadVanPlace.query.filter(NomadVanPlace.kindofplace.in_(body.get("kindOfPlace")),NomadVanPlace.rating.in_(body.get("rating")), NomadVanPlace.id.in_(relationServicesIds))
+    data = [item.serialize() for item in nomadvanplace] #Ver clase (y texto) de front-back para entenderlo bien
+    
+    return jsonify(data), 200
+# --------------------------------------------------------------------------------
 # Creamos un servicio para recibir toda la información de un Nomad Van Place
 @api.route("/places-list/<int:placeId>", methods=["GET"])
 # @jwt_required()

@@ -1,6 +1,7 @@
 import React, {useContext} from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import "../../styles/home.css";
 
 // export const Navbar = () => {
 // 	return (
@@ -44,7 +45,7 @@ export const Navbar = () => {
                                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                     Vistas
                                 </a>
-                                <ul className="dropdown-menu">
+                                <ul className="dropdown-menu" style={{zIndex: "2001"}}>
                                     <Link className="text-decoration-none" to="/cardsGrid">
                                         <li className="dropdown-item">Vista Tarjetas</li>
                                     </Link>
