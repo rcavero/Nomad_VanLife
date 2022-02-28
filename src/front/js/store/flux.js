@@ -82,20 +82,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			// -----------------------------------------------------------------------
 			// Create a new NomadVanPlace with the info caming from the form
-			createNomadVanPlace: (title, picture, location, kindOfPlace, services, description, rating) => {
+			createNomadVanPlace: (title, picture, latitude, longitude, kindOfPlace, services, description, rating) => {
 				const store = getStore();
-				const data = {
-					title: title,
-					picture: picture,
-					location: location,
-					kindOfPlace: kindOfPlace,
-					services: services,
-					description: description,
-					rating: rating
-				}
+				let body = new FormData()
+				body.append('title',title)
+				body.append('picture',picture[0])
+				body.append('latitude',latitude)
+				body.append('longitude',longitude)
+				body.append('kindOfPlace',kindOfPlace)
+				body.append('services',services)
+				body.append('description',description)
+				body.append('rating',rating)
+				// const data = {
+				// 	title: title,
+				// 	picture: picture[0],
+				// 	location: location,
+				// 	kindOfPlace: kindOfPlace,
+				// 	services: services,
+				// 	description: description,
+				// 	rating: rating
+				// }
+				// console.log(data.picture)
+				console.log(body)
 				const opts = {
 					method: "POST",
-					body: JSON.stringify(data),
+					body: body,
+					// mode: no-cors,
+					// body: JSON.stringify(data), //body
 					headers: {
 						"Authorization": "Bearer " + store.token
 					}

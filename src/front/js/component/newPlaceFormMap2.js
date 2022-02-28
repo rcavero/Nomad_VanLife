@@ -52,7 +52,8 @@ export const NewPlaceFormMap2 = () => {
                                     <label for="pictureNewPlace" className="col-form-label">Picture</label>
                                 </div>
                                 <div class="col-10">
-                                    <input id="pictureNewPlace" className="form-control" aria-describedby="passwordHelpInline" value={picture} onChange={(event) => setPicture(event.target.value)}/>
+                                    <input class="form-control" type="file" id="formFile" onChange={(e) => setPicture(e.target.files)}/>
+                                    {/* <input id="pictureNewPlace" className="form-control" aria-describedby="passwordHelpInline" value={picture} onChange={(event) => setPicture(event.target.value)}/> */}
                                 </div>
                             </div>
                             <div className="container-fluid p-0 mb-2" style={ {width: "100%", height: "40vh"} }>

@@ -6,7 +6,8 @@ import Map from "./mapRegister";
 export const NewPlaceForm = () => {
     const { store, actions } = useContext(Context);
     const [title, setTitle] = useState("Title");
-    const [picture, setPicture] = useState("https://i.blogs.es/e32e91/trucos-enfocar-fotografia-paisaje-01/1366_2000.jpg");
+    // const [picture, setPicture] = useState("https://i.blogs.es/e32e91/trucos-enfocar-fotografia-paisaje-01/1366_2000.jpg");
+    const [picture, setPicture] = useState(null);
     const [lat, setLat] = useState(store.currentLocation[0]);
     const [lng, setLng] = useState(store.currentLocation[1]);
     const [kindOfPlace, setKindOfPlace] = useState(1);
@@ -24,7 +25,8 @@ export const NewPlaceForm = () => {
     // },[store.currentLocation])
 
     const handleClick = () => {
-        actions.createNomadVanPlace(title, picture, [lat,lng], kindOfPlace, services, description, rating);
+        actions.createNomadVanPlace(title, picture, lat, lng, kindOfPlace, services, description, rating);
+        console.log(picture)
         // history.push("/")
     }
 
@@ -47,7 +49,7 @@ export const NewPlaceForm = () => {
                                     <label for="titleNewPlace" className="col-form-label">Title</label>
                                 </div>
                                 <div class="col-10">
-                                    <input id="titleNewPlace" className="form-control" aria-describedby="passwordHelpInline" value={title} onChange={(event) => setTitle(event.target.value)}/>
+                                    <input id="titleNewPlace" className="form-control" aria-describedby="passwordHelpInline" value={title} onChange={(event) => setTitle(event.target.value)} />
                                 </div>
                             </div>
                             <div class="row g-2 align-items-center mb-2">
@@ -55,11 +57,12 @@ export const NewPlaceForm = () => {
                                     <label for="pictureNewPlace" className="col-form-label">Picture</label>
                                 </div>
                                 <div class="col-10">
-                                    <input id="pictureNewPlace" className="form-control" aria-describedby="passwordHelpInline" value={picture} onChange={(event) => setPicture(event.target.value)}/>
+                                    <input class="form-control" type="file" id="formFile" onChange={(e) => setPicture(e.target.files)}/>
+                                    {/* <input id="pictureNewPlace" className="form-control" aria-describedby="passwordHelpInline" value={picture} onChange={(event) => setPicture(event.target.value)}/> */}
                                 </div>
                             </div>
-                            <div className="container-fluid p-0 mb-2" style={ {width: "100%", height: "40vh"} }>
-                                <Map setLat={setLat} setLng={setLng}/>
+                            <div className="container-fluid p-0 mb-2" style={{ width: "100%", height: "40vh" }}>
+                                <Map setLat={setLat} setLng={setLng} />
                             </div>
                             <div class="row g-2 align-items-center mb-2">
                                 <div class="col-2">
@@ -67,10 +70,10 @@ export const NewPlaceForm = () => {
                                 </div>
                                 {/* Importante! Aquí tenemos que modificarlo porque el onChange no nos funciona si no cambiamos nada en el input */}
                                 <div class="col-5">
-                                    <input id="locationNewPlace" className="form-control" placeholder="lat" aria-describedby="passwordHelpInline" value={lat}/>
+                                    <input id="locationNewPlace" className="form-control" placeholder="lat" aria-describedby="passwordHelpInline" value={lat} />
                                 </div>
                                 <div class="col-5">
-                                    <input id="locationNewPlace" className="form-control" placeholder="long" aria-describedby="passwordHelpInline" value={lng}/>
+                                    <input id="locationNewPlace" className="form-control" placeholder="long" aria-describedby="passwordHelpInline" value={lng} />
                                 </div>
                             </div>
                             <div class="row g-2 align-items-center mb-2">
@@ -93,19 +96,19 @@ export const NewPlaceForm = () => {
                                 </div>
                                 <div className=" col-4">
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="1" id="flexCheckDefault" onClick={()=>setServices([...services, 1])} />
+                                        <input className="form-check-input" type="checkbox" value="1" id="flexCheckDefault" onClick={() => setServices([...services, 1])} />
                                         <label className="form-check-label" for="flexCheckDefault">
                                             <p className="fw-bold m-0 p-0"><i className="fas fa-shower text-primary me-2"></i>Shower</p>
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" onClick={()=>setServices([...services, 2])}/>
+                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" onClick={() => setServices([...services, 2])} />
                                         <label className="form-check-label" for="flexCheckChecked">
                                             <p className="fw-bold m-0 p-0"><i className="fas fa-laptop text-primary me-2"></i>Wi-fi</p>
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" onClick={()=>setServices([...services, 3])}/>
+                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" onClick={() => setServices([...services, 3])} />
                                         <label className="form-check-label" for="flexCheckChecked">
                                             <p className="fw-bold m-0 p-0"><i className="fas fa-gas-pump text-primary me-2"></i>Gas</p>
                                         </label>
@@ -113,7 +116,7 @@ export const NewPlaceForm = () => {
                                 </div>
                                 <div className="col-4">
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" onClick={()=>setServices([...services, 4])}/>
+                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" onClick={() => setServices([...services, 4])} />
                                         <label className="form-check-label" for="flexCheckChecked">
                                             <p className="fw-bold m-0 p-0"><i className="fas fa-bed text-primary me-2"></i>Beds</p>
                                         </label>
@@ -126,7 +129,7 @@ export const NewPlaceForm = () => {
                                     <label for="descriptionNewPlace" className="col-form-label">Description</label>
                                 </div>
                                 <div class="col-9">
-                                    <textarea id="descriptionNewPlace" className="form-control" aria-describedby="passwordHelpInline" value={description} onChange={(event) => setDescription(event.target.value)}/>
+                                    <textarea id="descriptionNewPlace" className="form-control" aria-describedby="passwordHelpInline" value={description} onChange={(event) => setDescription(event.target.value)} />
                                 </div>
                             </div>
 
@@ -136,7 +139,7 @@ export const NewPlaceForm = () => {
                                 </div>
                                 <div className=" col-4">
                                     <div className="form-check">
-                                        <input className="form-check-input" type="radio" name="radioRating" value="0" id="flexCheckChecked" onClick={()=>setRating(0)}/>
+                                        <input className="form-check-input" type="radio" name="radioRating" value="0" id="flexCheckChecked" onClick={() => setRating(0)} />
                                         <label className="form-check-label" for="flexCheckChecked">
                                             <h5 className="card-text">
                                                 <i class="fas fa-star text-secondary"></i>
@@ -148,7 +151,7 @@ export const NewPlaceForm = () => {
                                         </label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="radio" name="radioRating" value="1" id="flexCheckChecked" onClick={()=>setRating(1)}/>
+                                        <input className="form-check-input" type="radio" name="radioRating" value="1" id="flexCheckChecked" onClick={() => setRating(1)} />
                                         <label className="form-check-label" for="flexCheckChecked">
                                             <h5 className="card-text">
                                                 <i class="fas fa-star text-warning"></i>
@@ -160,7 +163,7 @@ export const NewPlaceForm = () => {
                                         </label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="radio" name="radioRating" value="2" id="flexCheckChecked" onClick={()=>setRating(2)}/>
+                                        <input className="form-check-input" type="radio" name="radioRating" value="2" id="flexCheckChecked" onClick={() => setRating(2)} />
                                         <label className="form-check-label" for="flexCheckChecked">
                                             <h5 className="card-text">
                                                 <i class="fas fa-star text-warning"></i>
@@ -174,7 +177,7 @@ export const NewPlaceForm = () => {
                                 </div>
                                 <div className=" col-4">
                                     <div className="form-check">
-                                        <input className="form-check-input" type="radio" name="radioRating" value="3" id="flexCheckChecked" onClick={()=>setRating(3)}/>
+                                        <input className="form-check-input" type="radio" name="radioRating" value="3" id="flexCheckChecked" onClick={() => setRating(3)} />
                                         <label className="form-check-label" for="flexCheckChecked">
                                             <h5 className="card-text">
                                                 <i class="fas fa-star text-warning"></i>
@@ -186,7 +189,7 @@ export const NewPlaceForm = () => {
                                         </label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="radio" name="radioRating" value="4" id="flexCheckChecked" onClick={()=>setRating(4)}/>
+                                        <input className="form-check-input" type="radio" name="radioRating" value="4" id="flexCheckChecked" onClick={() => setRating(4)} />
                                         <label className="form-check-label" for="flexCheckChecked">
                                             <h5 className="card-text">
                                                 <i class="fas fa-star text-warning"></i>
@@ -198,7 +201,7 @@ export const NewPlaceForm = () => {
                                         </label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="radio" name="radioRating" value="5" id="flexCheckChecked" onClick={()=>setRating(5)}/>
+                                        <input className="form-check-input" type="radio" name="radioRating" value="5" id="flexCheckChecked" onClick={() => setRating(5)} />
                                         <label className="form-check-label" for="flexCheckChecked">
                                             <h5 className="card-text">
                                                 <i class="fas fa-star text-warning"></i>
@@ -212,7 +215,7 @@ export const NewPlaceForm = () => {
                                 </div>
                             </div>
                             {/* ------------------------------ */}
-                            
+
                             {/* ------------------------------ */}
                         </div>
                         <div className="modal-footer">

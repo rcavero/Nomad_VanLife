@@ -6,6 +6,8 @@ from api.models import db, User, NomadVanPlace, Locations, Services, ServicesRel
 from api.utils import generate_sitemap, APIException
 import json
 import datetime
+import cloudinary
+import cloudinary.uploader
 
 # --------------------------------------------------------------------------
 # Vamos importando las librerias necesarias y también lo que necesitamos de la DB (models)
@@ -70,25 +72,31 @@ def register_user():
 @jwt_required()
 def create_nomadvanplace():
     user = get_jwt_identity()
-    body = json.loads(request.data) # con request.data recibimos los datos y con json.loads cargamos los datos en formato original
-    print(body)
-    newLocation = Locations(lat=body.get('location')[0],lng=body.get('location')[1])
+    # body = json.loads(request.data) # con request.data recibimos los datos y con json.loads cargamos los datos en formato original
+    
+    # img cloudinary logic
+    img_for_upload = request.files['picture']
+    img_cloudinary = cloudinary.uploader.upload(img_for_upload)
+    # print(img_cloudinary['secure_url'])
+    print(request.data)
+    # newLocation = Locations(lat=body.get('location')[0],lng=body.get('location')[1])
+    newLocation = Locations(lat=request.form['latitude'],lng=request.form['longitude'])
     db.session.add(newLocation)
     db.session.commit()
     nomadvanplace = NomadVanPlace(
         user = user,
-        title = body.get('title'),
-        # image = body.get('picture'), la dejamos comentada porque no la hemos añadido en la db models.py
+        title = request.form['title'],
+        image = img_cloudinary['secure_url'],
         location = newLocation.id,
-        kindofplace = body.get('kindOfPlace'),
+        kindofplace = request.form['kindOfPlace'],
         # services = body.get('services'),
-        description = body.get('description'),
-        rating = body.get('rating'),
+        description = request.form['description'],
+        rating = request.form['rating'],
         date = datetime.datetime.now()
     )
     db.session.add(nomadvanplace)
     db.session.commit()
-    for service in body.get('services'):
+    for service in request.form['services'].split(","):
         newPlaceServices = ServicesRelationship(nomadvanplace_id = nomadvanplace.id, services_id = service)
         db.session.add(newPlaceServices)
         db.session.commit()
