@@ -132,7 +132,7 @@ class Todos(db.Model):
     done = db.Column(db.Boolean, unique=False, nullable=False)
     #location = db.Column(db.String(120), unique=False, nullable=False)
 
-    location = db.Column(db.Integer, db.ForeignKey('locations.id'), nullable=False)
+    location = db.Column(db.Integer, db.ForeignKey('locations.id'), nullable=True)
     user = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
