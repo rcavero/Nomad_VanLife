@@ -179,7 +179,7 @@ export const FilterModal = () => {
 						{/* ------------------------------ */}
 						<div className="modal-footer">
 							<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-							<button type="button" id="submitButton" className="btn btn-success" onClick={handleClick}>Apply Filters</button>
+							<button type="button" id="submitButton" className="btn btn-success" onClick={handleClick} data-bs-dismiss="modal">Apply Filters</button>
 						</div>
 					</div>
 				</div>
