@@ -81,9 +81,11 @@ const Map = () => {
               <Marker
                 title={value.title}
                 position={{ lat: value.location.lat, lng: value.location.lng }}
+                // position={{ lat: value.latitude, lng: value.longitude }}
                 onClick={() => {
                   onToggleOpen(index);
                   setCenter({ lat: value.location.lat, lng: value.location.lng })
+                  // setCenter({ lat: value.latitude, lng: value.longitude })
                 }}
               >
                 {showInfo.show && showInfo.id == index && (

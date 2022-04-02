@@ -22,7 +22,8 @@ export const NewPlaceFormMap2 = () => {
     // },[store.currentLocation])
 
     const handleClick = () => {
-        actions.createNomadVanPlace(title, picture, [lat,lng], kindOfPlace, services, description, rating);
+        actions.createNomadVanPlace(title, picture, lat,lng, kindOfPlace, services, description, rating);
+        // hemos cambiado que aquí se pasaba -->   [lat, lng]
     }
 
     return (
